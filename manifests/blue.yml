@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web-blue
+  labels:
+    name: web
+    role: web
+    color: blue
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: web-blue
+        role: web
+        color: blue
+    spec:
+      containers:
+        - name: app
+          image: sho2010/k8s-handson
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MESSAGE
+              value: "blue container!"

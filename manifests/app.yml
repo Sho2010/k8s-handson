@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    name: web
+    role: web
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: web
+        role: web
+    spec:
+      containers:
+        - name: app
+          image: sho2010/k8s-handson
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MESSAGE
+              value: "hello container!"
